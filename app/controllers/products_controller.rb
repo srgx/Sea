@@ -3,7 +3,8 @@ class ProductsController < ApplicationController
   http_basic_authenticate_with name: "john", password: "password123", except: [:index, :show]
 
   def index
-    @products = Product.all
+    ord = params[:order]
+    @products = Product.paginate(page: params[:page], per_page: 3).order('name ASC')
   end
 
   def show
@@ -48,6 +49,6 @@ class ProductsController < ApplicationController
 
   private
     def product_params
-      params.require(:product).permit(:name,:description)
+      params.require(:product).permit(:name,:description,:price)
     end
 end

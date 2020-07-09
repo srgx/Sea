@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+20.times do |i|
+	prc = rand 100
+  p = Product.create(name: Faker::Space.unique.meteorite, description: Faker::TvShows::Buffy.unique.quote, price: prc)
+
+	3.times do |j|
+		Review.create(author: Faker::Computer.os, body: Faker::Quote.robin, product: p)
+	end
+end
