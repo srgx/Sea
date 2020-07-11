@@ -1,7 +1,15 @@
 require 'test_helper'
 
 class ProductsControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  
+  test "should get products" do
+    get products_url
+    assert_response :success
+  end
+
+  test "should get one product" do
+    prd = products(:one)
+    get product_url(prd)
+    assert_response :success
+  end
 end
